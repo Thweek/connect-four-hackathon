@@ -21,6 +21,30 @@ GAME LOOP
 class Game {
   constructor(players) {
     this.grid = new Grid();
-    
+    this.players = [
+      new Player(players[0].name, players[0].id, players[0].colour),
+      new Player(players[1].name, players[1].id, players[1].colour),
+    ];
+    this.currentPlayerIndex = 0;
+  }
+  play(){
+    while(true){
+        let playerMove = this.players[this.currentPlayerIndex].getMove();
+        let colour = this.players[this.currentPlayerIndex].colour;
+        this.grid.grid[checksIfEmpty][playerMove].setColour(colour);
+        //Figure out next empty slot in the array for position.
+        function checksIfEmpty (playerMove){
+            for(let i = this.grid.grid.length -1; i >= 0; i--){
+                if(this.grid.grid[i][playerMove].slotColour === "white"){
+                    return i;
+                }
+            }
+        }
+        console.log(this.grid.grid);
+        this.currentPlayerIndex++
+        if(this.currentPlayerIndex>this.players.length){
+            this.currentPlayerIndex = 0;
+        }
+    }
   }
 }

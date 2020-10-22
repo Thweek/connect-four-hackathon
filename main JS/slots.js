@@ -10,13 +10,12 @@ class Slot {
         this.slotId = id;
         this.slotColour = "white";
     }
-    setRed(){
-        this.slotColour = "red";
-    }
-    setYellow(){
-        this.slotColour = "yellow";
+    setColour(colour){
+        this.slotColour = colour;
     }
     setWhite(){
         this.slotColour = "white";
-    }
+    }  
 }
+
+

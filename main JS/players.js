@@ -17,7 +17,7 @@ class Player {
   }
 
   getMove() {
-    const number = parseInt(
+    const number = (
       prompt(`${name} Pick a slot between 1 and 7.`)
     )
       return number -1;
