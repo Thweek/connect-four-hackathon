@@ -6,16 +6,14 @@ BEHAVIOUR
 */
 
 class Slot {
-    constructor(id){
-        this.slotId = id;
-        this.slotColour = "white";
-    }
-    setColour(colour){
-        this.slotColour = colour;
-    }
-    setWhite(){
-        this.slotColour = "white";
-    }  
+  constructor(id) {
+    this.slotId = id;
+    this.slotColour = "white";
+  }
+  setColour(colour) {
+    this.slotColour = colour;
+  }
+  setWhite() {
+    this.slotColour = "white";
+  }
 }
-
-
