@@ -1,0 +1,74 @@
+CONNECT-FOUR
+RESEARCH:
+-Matrix array. One big array for all of grid.
+-Connecting array position to certain canvas elements.
+-Working out win condition. Lining up of four chips in a row.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+FUNCTIONALITY
+
+CLASSES:
+-GAME
+-PLAYERS
+-GRID
+-SLOT
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+GAME:
+
+STATE
+-grid = empty
+-playersArray
+-activePlayersIndex
+
+BEHAVIOUR
+-play game
+Set player colours, send prompt to first player. Start button/alert.
+-Check Winner 
+See if four of the same colour are in grid in a vertical/horizontal/diagonal alignment.
+ Possibly need to do this for every section of grid to check for results
+-Go to next player 
+If player hasn't won transfer to second player/other colour and start their turn.
+
+GAME LOOP
+-Player chooses slot position.
+-Grid takes in slot position from player and chooses slot array based on this.
+-Chosen slot array changes first empty hole in array to active players colour.
+-Check for winner ^^
+-Move to next player.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+PLAYER:
+
+STATE 
+-name (name for player 1 and player 2/computer)
+-colour (red/yellow)
+-slot position (start at neutral/blank)
+
+BEHAVIOUR 
+-Choose name?
+-set colour?
+-Choose slot method (1-7)
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+GRID:
+
+STATE
+-Array of 7 SLOTS
+-active player
+
+BEHAVIOUR 
+-get Player
+-Choose slot position 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+SLOT:
+
+STATE
+-Array of holes from 1-6 vertically.
+-Holes are empty/yellow/red
+
+BEHAVIOUR 
+-Change next available non-empty hole in array to active players colour.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+DESIGN:
+-Blue grid with 7 x 6 whtie (empty) holes.
+-Under each column (slot) have a button (with a number)
+-White empty holes change colour to red/yellow when player makes a move. 
+-Title, background, start button, win screen, restart.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
