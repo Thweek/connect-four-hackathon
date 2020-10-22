@@ -5,8 +5,22 @@ STATE
 -colour (red/yellow)
 -slot position (start at neutral/blank)
 BEHAVIOUR
--Choose name?
--set colour?
 -Choose slot method (1-7)
 */
 
+class Player {
+  constructor(id, name, colour) {
+    this.id = id;
+    this.name = name;
+    this.colour = colour;
+    
+  }
+
+  getMove() {
+    const number = parseInt(
+      prompt(`${name} Pick a slot between 1 and 7.`)
+    )
+      return number -1;
+  }
+
+}

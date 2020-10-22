@@ -17,3 +17,10 @@ GAME LOOP
 -Chosen slot array changes first empty hole in array to active players colour.
 -Check for winner ^^
 -Move to next player.*/
+
+class Game {
+  constructor(players) {
+    this.grid = new Grid();
+    
+  }
+}
