@@ -1,18 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style src = "main.css"></style>
+    <!-- Link to stylesheet -->
+    <link rel="stylesheet" href="main.css">
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
 </head>
+
 <body>
-    <canvas></canvas>
-    <script src ="canvas.js"></script>
-   <script src ="main JS/slots.js"></script> 
-   <script src ="main JS/grid.js"></script> 
-   <script src ="main JS/players.js"></script> 
-   <script src ="main JS/game.js"></script>
-   <script src ="main1.js"></script>
+
+    <div id="main-container">
+        <div id="rectangle-container">
+            <svg id="board" width="700" height="600">
+                <rect width="700" height="600" style="fill: #2d6187 ;stroke-width:3;stroke:#2d6187" />
+
+            </svg>
+        </div>
+        <div id="dot-container">
+            <br></br>
+            <span id="1" class="dot"></span>
+            <span id="2" class="dot"></span>
+            <span id="3" class="dot"></span>
+            <span id="4" class="dot"></span>
+            <span id="5" class="dot"></span>
+            <span id="6" class="dot"></span>
+            <span id="7" class="dot"></span>
+            <br></br>
+            <span id="8" class="dot"></span>
+            <span id="9" class="dot"></span>
+            <span id="10" class="dot"></span>
+            <span id="11" class="dot"></span>
+            <span id="12" class="dot"></span>
+            <span id="13" class="dot"></span>
+            <span id="14" class="dot"></span>
+            <br></br>
+            <span id="15" class="dot"></span>
+            <span id="16" class="dot"></span>
+            <span id="17" class="dot"></span>
+            <span id="18" class="dot"></span>
+            <span id="19" class="dot"></span>
+            <span id="20" class="dot"></span>
+            <span id="21" class="dot"></span>
+            <br></br>
+            <span id="22" class="dot"></span>
+            <span id="23" class="dot"></span>
+            <span id="24" class="dot"></span>
+            <span id="25" class="dot"></span>
+            <span id="26" class="dot"></span>
+            <span id="27" class="dot"></span>
+            <span id="28" class="dot"></span>
+            <br></br>
+            <span id="29" class="dot"></span>
+            <span id="30" class="dot"></span>
+            <span id="31" class="dot"></span>
+            <span id="32" class="dot"></span>
+            <span id="33" class="dot"></span>
+            <span id="34" class="dot"></span>
+            <span id="35" class="dot"></span>
+            <br></br>
+            <span id="36" class="dot"></span>
+            <span id="37" class="dot"></span>
+            <span id="38" class="dot"></span>
+            <span id="39" class="dot"></span>
+            <span id="40" class="dot"></span>
+            <span id="41" class="dot"></span>
+            <span id="42" class="dot"></span>
+        </div>
+    </div>
+
+    <br></br>
+
+    <div id="button-container">
+        <button type="button" class="btn btn-success mr-3">Slot 1</button>
+        <button type="button" class="btn btn-success mr-3">Slot 2</button>
+        <button type="button" class="btn btn-success mr-3">Slot 3</button>
+        <button type="button" class="btn btn-success mr-3">Slot 4</button>
+        <button type="button" class="btn btn-success mr-3">Slot 5</button>
+        <button type="button" class="btn btn-success mr-3">Slot 6</button>
+        <button type="button" class="btn btn-success mr-3">Slot 7</button>
+    </div>
+
+    <!-- <canvas></canvas> -->
+    <script src="canvas.js"></script>
+    <script src="main JS/slots.js"></script>
+    <script src="main JS/grid.js"></script>
+    <script src="main JS/players.js"></script>
+    <script src="main JS/game.js"></script>
+    <script src="main1.js"></script>
 </body>
+
 </html>
