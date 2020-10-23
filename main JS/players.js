@@ -14,9 +14,6 @@ class Player {
     this.name = name;
     this.colour = colour;
   }
-
-  getMove() {
-    const number = parseInt(prompt(`${this.name} Pick a slot between 1 and 7.`));
-    return number - 1;
-  }
 }
+
+//Number not being returned properly to game, look into return options/variables?

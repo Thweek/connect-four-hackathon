@@ -30,24 +30,18 @@ class Game {
     //Helps switch between players.
     this.currentPlayerIndex = 0;
   }
-
-  
-  play() {
-    while (true) {
-      //gets player move (column choice) from prompt
-      let playerMove = this.players[this.currentPlayerIndex].getMove();
+  play(playerMove) {    
       //Gets the current players colour to pass down to setColour
       let colour = this.players[this.currentPlayerIndex].colour;
       //Change colour of span elements
       let chosenId = this.connectFour.grid[this.checksIfEmpty(playerMove)][playerMove].slotId;
-      console.log(chosenId);
+
       //Main game function to add a coloured piece when a column is selected.
       this.connectFour.grid[this.checksIfEmpty(playerMove)][playerMove].setColour(colour);
-      let slotColour = document.getElementById(`${chosenId}`);
-
       //Set colour to player1 colour.
-      slotColour.style.colour = "#ff0000";
-      console.log(slotColour);
+      // let slotElement = document.getElementById(`${chosenId}`);
+      // slotElement.style.colour = this.players[this.currentPlayerIndex].colour;     //Check if gives back a colour, but need to sort out get player move above.
+      // console.log(slotColour);
       
       console.log(this.connectFour.grid);
       //Switch to next player
@@ -55,12 +49,13 @@ class Game {
       if (this.currentPlayerIndex >= this.players.length) {
         this.currentPlayerIndex = 0;
       }
-    }
   }
   //Figure out next empty slot in the array for position.
-  checksIfEmpty(playerMove) {
+  checksIfEmpty(column) {
     for (let i = this.connectFour.grid.length - 1; i >= 0; i--) {
-      if (this.connectFour.grid[i][playerMove].slotColour === "white") {
+      console.log(column);
+      if (this.connectFour.grid[i][column].slotColour === "white") {
+        console.log(i)
         return i;
       }
     }
