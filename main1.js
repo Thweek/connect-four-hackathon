@@ -16,13 +16,13 @@ const players = [
 
 const game = new Game(players);
 
-buttonOne.addEventListener("click", game.play(1));
-buttonTwo.addEventListener("click", game.play(2));
-buttonThree.addEventListener("click", game.play(3));
-buttonFour.addEventListener("click", game.play(4));
-buttonFive.addEventListener("click", game.play(5));
-buttonSix.addEventListener("click", game.play(6));
-buttonSeven.addEventListener("click", game.play(7));
+buttonOne.addEventListener("click", ()=> {game.play(0);});
+buttonTwo.addEventListener("click", ()=> {game.play(1)});
+buttonThree.addEventListener("click", ()=> {game.play(2)});
+buttonFour.addEventListener("click", ()=> {game.play(3)});
+buttonFive.addEventListener("click", ()=> {game.play(4)});
+buttonSix.addEventListener("click", ()=> {game.play(5)});
+buttonSeven.addEventListener("click", ()=> {game.play(6)});
 
 
 //Creat event lsiteners and pass in to play();
