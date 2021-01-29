@@ -1,19 +1,16 @@
-# Game Hackathon
+# Connect Four
 
-For the next two days we are going to design and build our own game. It is an opportunity to cement what we've learnt about object oriented programming, as well as planning, ideating and MVP.
+A version of connect four made while on the School of Code course with my team member Bradley.
+Original version made in week 4 of our bootcamp.
+All changes come after the bootcamp.
 
-## Task 1 - Wed afternoon
+## How to play
+### Current version only playable on local browser and only one person can control.
+- Run live version of html/open in browser.
+- Enter name of player one and then player two.
+- On your turn use the buttons to choose which column you'd like to drop a chip in.
 
-Choose a game to recreate in code. Use disney ideation, and then break it down to the essence (MVP) and plan what classes you will need, and what state and behavior each class will need. The break each of the behaviors down to a level were you can start coding.
+## Change log
 
-## Task 2 - Wed Afternoon
-
-Put each of your classes into a trello board with a todo, doing and done column.
-
-## Task 3 - Build Your MVP
-
-Get the simplest possible version of your game working.
-
-## Task 4 - Next steps
-
-Choose what your next steps are, what functionality would make the biggest impact. If you've used alert/prompt for your MVP. Display your game on the page either with the DOM or your new canvas games.
+- Added in visual display so that colour of chosen slot changes on the page as well as in game array.
+- Added a text display that shows current player and there colour.

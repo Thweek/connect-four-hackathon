@@ -29,33 +29,47 @@ class Game {
     ];
     //Helps switch between players.
     this.currentPlayerIndex = 0;
+
+    //Shows current player
+    let currentPlayerDisplay = document.querySelector("#player-name")
+    currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} there colour is ${this.players[this.currentPlayerIndex].colour}`
+    //This displays a prompt on screen for current player and their colour at the start of the game
   }
   play(playerMove) {    
       //Gets the current players colour to pass down to setColour
       let colour = this.players[this.currentPlayerIndex].colour;
       //Change colour of span elements
       let chosenId = this.connectFour.grid[this.checksIfEmpty(playerMove)][playerMove].slotId;
+      console.log(`Id of slot is ${chosenId}`)
+      //returns log of the id of the slot that the exact slot the chip went into.
 
       //Main game function to add a coloured piece when a column is selected.
       this.connectFour.grid[this.checksIfEmpty(playerMove)][playerMove].setColour(colour);
-      //Set colour to player1 colour.
-      // let slotElement = document.getElementById(`${chosenId}`);
-      // slotElement.style.colour = this.players[this.currentPlayerIndex].colour;     //Check if gives back a colour, but need to sort out get player move above.
-      // console.log(slotColour);
+      //Set colour to next players colour on array.
+
+      let chosenSlot = document.getElementById(`${chosenId}`)
+      chosenSlot.style.backgroundColor = colour
+      //changes backgroundcolour of span css based on specific slot id
+      console.log(`Last players colour was ${chosenSlot.style.backgroundColor}`)
       
-      console.log(this.connectFour.grid);
-      //Switch to next player
       this.currentPlayerIndex++;
       if (this.currentPlayerIndex >= this.players.length) {
         this.currentPlayerIndex = 0;
       }
-  }
+      //Switch to next player
+
+      let currentPlayerDisplay = document.querySelector("#player-name")
+      currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} there colour is ${this.players[this.currentPlayerIndex].colour}`
+      //This displays a prompt on screen for current player and their colour
+    }
   //Figure out next empty slot in the array for position.
   checksIfEmpty(column) {
     for (let i = this.connectFour.grid.length - 1; i >= 0; i--) {
-      console.log(column);
+      console.log(`Column index is ${column}`);
+      //returns log of chosen column array index
       if (this.connectFour.grid[i][column].slotColour === "white") {
-        console.log(i)
+        console.log(`Row index is ${i}`)
+        //returns log of the array index of the row the chip was dropped to
         return i;
       }
     }
