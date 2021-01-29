@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connect Four</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+    </style>
     <!-- Link to stylesheet -->
     <link rel="stylesheet" href="main.css">
     <!-- bootstrap link -->
@@ -15,7 +18,21 @@
 </head>
 
 <body>
-
+<div id="game-container">
+    <div id="game-title">
+        <span style="color: red;">C</span>
+        <span style="color: yellow;">O</span>
+        <span style="color: red;">N</span>
+        <span style="color: yellow;">N</span>
+        <span style="color: red;">E</span>
+        <span style="color: yellow;">C</span>
+        <span style="color: red;">T</span>
+        <span>-</span>
+        <span style="color: yellow;">F</span>
+        <span style="color: red;">O</span>
+        <span style="color: yellow;">U</span>
+        <span style="color: red;">R</span>
+    </div>
     <div id="main-container">
         <div id="rectangle-container">
             <svg id="board" width="700" height="600">
@@ -75,7 +92,7 @@
         </div>
     </div>
 
-    <br></br>
+    
 
     <div id="button-container">
         <button type="button" class="btn btn-success mr-3" id="button1">Slot 1</button>
@@ -87,6 +104,7 @@
         <button type="button" class="btn btn-success mr-3" id="button7">Slot 7</button>
     </div>
     <p id="player-name"></p>
+</div>
 
     <!-- <canvas></canvas> -->
     <script src="Classes/slots.js"></script>

@@ -14,3 +14,5 @@ All changes come after the bootcamp.
 
 - Added in visual display so that colour of chosen slot changes on the page as well as in game array.
 - Added a text display that shows current player and there colour.
+- Added a variety of console logs to show and explain what is happening as game proceeds. Access your development console and then navigate to console to see these.
+- Changed CSS to centre the display.
