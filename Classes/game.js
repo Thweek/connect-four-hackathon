@@ -42,19 +42,21 @@ class Game {
       //Change colour of span elements
 
       let chosenId = this.connectFour.grid[this.checksIfEmpty(playerMove)][playerMove].slotId;
-      console.log(`Id of slot is ${chosenId}`)
+      // console.log(`Id of slot is ${chosenId}`)
       //returns log of the id of the slot that the exact slot the chip went into.
+
+      let chosenSlot = document.getElementById(`${chosenId}`)
+      chosenSlot.style.backgroundColor = colour
+      //changes backgroundcolour of span css based on specific slot id
 
       //Main game function to add a coloured piece when a column is selected.
       this.connectFour.grid[this.checksIfEmpty(playerMove)][playerMove].setColour(colour);
       //Set colour to next players colour on array.
 
-      let chosenSlot = document.getElementById(`${chosenId}`)
-      chosenSlot.style.backgroundColor = colour
-      //changes backgroundcolour of span css based on specific slot id
-      console.log(`Last players colour was ${chosenSlot.style.backgroundColor}`)
       
-      this.checkForWinner(row, playerMove, colour)
+      // console.log(`Last players colour was ${chosenSlot.style.backgroundColor}`)
+      
+      this.checkForWinner(row, playerMove, colour, this.connectFour.grid, this.players[this.currentPlayerIndex].name)
 
       this.currentPlayerIndex++;
       if (this.currentPlayerIndex >= this.players.length) {
@@ -82,19 +84,40 @@ class Game {
     }
   }
 
-  checkForWinner(row, column, color){
-    let gridArray = this.connectFour.grid
+  checkForWinner(row, column, color, grid, player){
+    console.log(row, column, color)
+    //this is the index for the row and column, +1 for actual position.
     function checkVertical(){
 
     }
     function checkHorizontal(){
-      console.log(row, column, color)
+      let count = 0
       //for loop plus and minus either side 
       //check if it goes over or under array index length
       //have count that increases as same coloured slots found 
       //stop loop if different colour found or if edge of array is reached.
       //If count reaches four then you have a winner
       //One side at a time.
+
+      //progress:
+      //it can do it in one direction horizontally but buggers up if you place something in last column
+      //Look into why it doesnt then move onto changing the player
+      for (let i = column; i<column+3; i++){
+        console.log(`This is column ${column}`)
+        
+        if (grid[row][i].slotColour != color || i === 7) {
+          return console.log(`The count is ${count}`)
+          
+        } else if(grid[row][i].slotColour === color){
+          count++
+          console.log(`The colour is ${grid[row][i].slotColour}`)
+          console.log(`The count is ${count-1} + 1`)
+        }
+      }
+      if (count === 4){
+        alert(`The winner is ${player}`)
+      }
+
     }
     function checkTopLeftDiagonal(){
 
