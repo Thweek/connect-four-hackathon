@@ -91,7 +91,7 @@ class Game {
 
     }
     function checkHorizontal(){
-      let count = 0
+      let count = 1
       //for loop plus and minus either side 
       //check if it goes over or under array index length
       //have count that increases as same coloured slots found 
@@ -99,23 +99,52 @@ class Game {
       //If count reaches four then you have a winner
       //One side at a time.
 
-      //progress:
-      //it can do it in one direction horizontally but buggers up if you place something in last column
-      //Look into why it doesnt then move onto changing the player
-      for (let i = column; i<column+3; i++){
-        console.log(`This is column ${column}`)
+      for (let i = column+1; i<column+4; i++){
+        console.log(`Testing to the right of column ${column}`)
         
-        if (grid[row][i].slotColour != color || i === 7) {
+        if (i > 6 || grid[row][i].slotColour != color) {
           return console.log(`The count is ${count}`)
           
         } else if(grid[row][i].slotColour === color){
           count++
-          console.log(`The colour is ${grid[row][i].slotColour}`)
-          console.log(`The count is ${count-1} + 1`)
+          console.log(`The count is ${count-1} + 1 from the right`)
         }
       }
+      
+      //not doing tests to the left, other than that seems to work fine
+
+      for (let i = column-1; i > column-1; i--){
+        console.log(`Testing to the left of column ${column}`)
+        if(i < 0 || grid[row][i].slotColour != color){
+          return console.log(`The count is ${count}`)
+
+        } else if (grid[row][i].slotColour === color){
+          count++
+          console.log(`The count is ${count-1} + 1 from the left`)
+        }
+      }
+
       if (count === 4){
-        alert(`The winner is ${player}`)
+        confirm(`The winner is ${player}`)
+        let buttonOne = document.querySelector("#button1");
+        let buttonTwo = document.querySelector("#button2");
+        let buttonThree = document.querySelector("#button3");
+        let buttonFour = document.querySelector("#button4");
+        let buttonFive = document.querySelector("#button5");
+        let buttonSix = document.querySelector("#button6");
+        let buttonSeven = document.querySelector("#button7");
+        let currentPlayerDisplay = document.querySelector("#player-name")
+        buttonOne.remove()
+        buttonTwo.remove()
+        buttonThree.remove()
+        buttonFour.remove()
+        buttonFive.remove()
+        buttonSix.remove()
+        buttonSeven.remove()
+        currentPlayerDisplay.innerHTML = `The winner is ${player} the ${color} player, click restart to play again.`
+        //script at end doesn't work as it moves on to next bit of .play which changes the innerHTML.
+        //Need to get it to stop .play here at check for winner.
+
       }
 
     }
