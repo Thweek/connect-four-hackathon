@@ -1,5 +1,5 @@
-const playerName1 = prompt("Player1 What is your name?");
-const playerName2 = prompt("Player 2 What is your name?");
+const playerName1 = prompt("Player1 What is your name?", "Player One");
+const playerName2 = prompt("Player 2 What is your name?", "Player Two");
 
 let buttonOne = document.querySelector("#button1");
 let buttonTwo = document.querySelector("#button2");
@@ -8,6 +8,7 @@ let buttonFour = document.querySelector("#button4");
 let buttonFive = document.querySelector("#button5");
 let buttonSix = document.querySelector("#button6");
 let buttonSeven = document.querySelector("#button7");
+// let resetButton = document.querySelector("#reset")
 
 
 
@@ -25,3 +26,4 @@ buttonFour.addEventListener("click", ()=> {game.play(3)});
 buttonFive.addEventListener("click", ()=> {game.play(4)});
 buttonSix.addEventListener("click", ()=> {game.play(5)});
 buttonSeven.addEventListener("click", ()=> {game.play(6)});
+// resetButton.addEventListener("click", ()=> {game})

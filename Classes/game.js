@@ -22,18 +22,23 @@ class Game {
   constructor(players) {
     //set up 6 x 7 array grid.
     this.connectFour = new Grid();
+    
     //Creates players and assigns name, colour and id.
     this.players = [
       new Player(players[0].id, players[0].name, players[0].colour),
       new Player(players[1].id, players[1].name,  players[1].colour),
     ];
+
     //Helps switch between players.
     this.currentPlayerIndex = 0;
 
     //Shows current player
     let currentPlayerDisplay = document.querySelector("#player-name")
-    currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} there colour is ${this.players[this.currentPlayerIndex].colour}`
+    currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} their colour is ${this.players[this.currentPlayerIndex].colour}`
     //This displays a prompt on screen for current player and their colour at the start of the game
+
+    //sets up winner class
+    this.gameWon = new Winner();
   }
   play(playerMove) {  
       let row = this.checksIfEmpty(playerMove)  
@@ -56,7 +61,7 @@ class Game {
       
       // console.log(`Last players colour was ${chosenSlot.style.backgroundColor}`)
       
-      this.checkForWinner(row, playerMove, colour, this.connectFour.grid, this.players[this.currentPlayerIndex].name)
+      this.checkForWinner(row, playerMove, colour, this.connectFour.grid, this.players[this.currentPlayerIndex].name, this.gameWon)
 
       this.currentPlayerIndex++;
       if (this.currentPlayerIndex >= this.players.length) {
@@ -65,8 +70,14 @@ class Game {
       //Switch to next player
 
       let currentPlayerDisplay = document.querySelector("#player-name")
-      currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} there colour is ${this.players[this.currentPlayerIndex].colour}`
-      //This displays a prompt on screen for current player and their colour
+      if(this.gameWon.winnerFound === false){
+        currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} there colour is ${this.players[this.currentPlayerIndex].colour}`
+      } else {
+        console.log(`Winner found is ${this.gameWon.winnerFound}`)
+        currentPlayerDisplay.innerHTML = `The winner is ${this.gameWon.winningPlayer}, click restart to play again.`
+      }
+      //This displays a prompt on screen for current player and their colour.
+      //Also sets winning message if winner found.
 
       console.log(this.connectFour.grid)
       //returns log of matrix array with slot colour changed based on player input
@@ -84,7 +95,7 @@ class Game {
     }
   }
 
-  checkForWinner(row, column, color, grid, player){
+  checkForWinner(row, column, color, grid, player, gameWon){
     console.log(row, column, color)
     //this is the index for the row and column, +1 for actual position.
     
@@ -133,7 +144,6 @@ class Game {
         let buttonFive = document.querySelector("#button5");
         let buttonSix = document.querySelector("#button6");
         let buttonSeven = document.querySelector("#button7");
-        let currentPlayerDisplay = document.querySelector("#player-name")
         buttonOne.remove()
         buttonTwo.remove()
         buttonThree.remove()
@@ -141,8 +151,8 @@ class Game {
         buttonFive.remove()
         buttonSix.remove()
         buttonSeven.remove()
-        currentPlayerDisplay.innerHTML = `The winner is ${player} the ${color} player, click restart to play again.`
-        
+        gameWon.setWinner(player)
+        console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
 
     }
@@ -171,7 +181,6 @@ class Game {
         let buttonFive = document.querySelector("#button5");
         let buttonSix = document.querySelector("#button6");
         let buttonSeven = document.querySelector("#button7");
-        let currentPlayerDisplay = document.querySelector("#player-name")
         buttonOne.remove()
         buttonTwo.remove()
         buttonThree.remove()
@@ -179,7 +188,8 @@ class Game {
         buttonFive.remove()
         buttonSix.remove()
         buttonSeven.remove()
-        currentPlayerDisplay.innerHTML = `The winner is ${player} the ${color} player, click restart to play again.`
+        gameWon.setWinner(player)
+        console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
 
     }
@@ -226,7 +236,6 @@ class Game {
         let buttonFive = document.querySelector("#button5");
         let buttonSix = document.querySelector("#button6");
         let buttonSeven = document.querySelector("#button7");
-        let currentPlayerDisplay = document.querySelector("#player-name")
         buttonOne.remove()
         buttonTwo.remove()
         buttonThree.remove()
@@ -234,7 +243,8 @@ class Game {
         buttonFive.remove()
         buttonSix.remove()
         buttonSeven.remove()
-        currentPlayerDisplay.innerHTML = `The winner is ${player} the ${color} player, click restart to play again.`
+        gameWon.setWinner(player)
+        console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
     }
     
@@ -276,7 +286,6 @@ class Game {
         let buttonFive = document.querySelector("#button5");
         let buttonSix = document.querySelector("#button6");
         let buttonSeven = document.querySelector("#button7");
-        let currentPlayerDisplay = document.querySelector("#player-name")
         buttonOne.remove()
         buttonTwo.remove()
         buttonThree.remove()
@@ -284,7 +293,8 @@ class Game {
         buttonFive.remove()
         buttonSix.remove()
         buttonSeven.remove()
-        currentPlayerDisplay.innerHTML = `The winner is ${player} the ${color} player, click restart to play again.`
+        gameWon.setWinner(player)
+        console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
     }
 
@@ -294,8 +304,11 @@ class Game {
     checkTopRightDiagonal()
   }
 }
+
+//reset button made and working. Need to add css.
+
 //create a winner class, that can change once winner found.
-//reset button that creates new Game.
+
 //Get it to highlight the winning four.
 //Deploy as Lan game.
 //Work on websocket version.

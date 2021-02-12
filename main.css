@@ -57,3 +57,22 @@
   margin-left: 10px;
   position: relative;
 }
+
+#reset{
+  margin: auto;
+  background-color: #28a745;
+  border-color: #28a745;
+  border-width: 0px;
+  border-radius: .25rem;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#reset:hover{
+  background-color: #218838;
+  border-color: #218838;
+}
