@@ -1,5 +1,5 @@
-const playerName1 = prompt("Player 1 What is your name?", "Player One");
-const playerName2 = prompt("Player 2 What is your name?", "Player Two");
+let playerName1 = prompt("Player 1 What is your name?", "Player One");
+let playerName2 = prompt("Player 2 What is your name?", "Player Two");
 
 let buttonOne = document.querySelector("#button1");
 let buttonTwo = document.querySelector("#button2");
@@ -9,6 +9,13 @@ let buttonFive = document.querySelector("#button5");
 let buttonSix = document.querySelector("#button6");
 let buttonSeven = document.querySelector("#button7");
 // let resetButton = document.querySelector("#reset")
+if(playerName1 === null || " " || undefined){
+  playerName1 = "Player One"
+}
+
+if(playerName2 === null || " " || undefined){
+  playerName2 = "Player Two"
+}
 
 const players = [
   { id: 1, name: playerName1, colour: "Red" },
