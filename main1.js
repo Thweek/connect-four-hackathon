@@ -13,6 +13,7 @@ if(playerName1 === null || " " || undefined){
   playerName1 = "Player One"
 }
 
+
 if(playerName2 === null || " " || undefined){
   playerName2 = "Player Two"
 }

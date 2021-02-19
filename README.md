@@ -34,3 +34,7 @@ All changes come after the bootcamp.
 - Slots now highlight when winner found.
 - Will try and deploy app now.
 
+## Todo
+- Sort default name, when using if statement to set it. Automatically defaults.
+- Make highlighting of Winner better
+
