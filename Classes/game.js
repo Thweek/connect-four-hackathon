@@ -73,11 +73,25 @@ class Game {
       if(this.gameWon.winnerFound === false){
         currentPlayerDisplay.innerHTML = `Current player is ${this.players[this.currentPlayerIndex].name} there colour is ${this.players[this.currentPlayerIndex].colour}`
       } else {
+        let buttonOne = document.querySelector("#button1");
+        let buttonTwo = document.querySelector("#button2");
+        let buttonThree = document.querySelector("#button3");
+        let buttonFour = document.querySelector("#button4");
+        let buttonFive = document.querySelector("#button5");
+        let buttonSix = document.querySelector("#button6");
+        let buttonSeven = document.querySelector("#button7");
+        buttonOne.remove()
+        buttonTwo.remove()
+        buttonThree.remove()
+        buttonFour.remove()
+        buttonFive.remove()
+        buttonSix.remove()
+        buttonSeven.remove()
         console.log(`Winner found is ${this.gameWon.winnerFound}`)
         currentPlayerDisplay.innerHTML = `The winner is ${this.gameWon.winningPlayer}, click restart to play again.`
       }
       //This displays a prompt on screen for current player and their colour.
-      //Also sets winning message if winner found.
+      //Also removes buttons and creates the win screen.
 
       console.log(this.connectFour.grid)
       //returns log of matrix array with slot colour changed based on player input
@@ -101,6 +115,8 @@ class Game {
     
     function checkHorizontal(){
       let count = 1
+      let winningFour = [grid[row][column].slotId]
+      console.log(`Winning four reset to just ${winningFour}`)
       //for loop plus and minus either side 
       //check if it goes over or under array index length
       //have count that increases as same coloured slots found 
@@ -109,87 +125,76 @@ class Game {
       //One side at a time.
 
       for (let i = column+1; i<column+4; i++){
-        console.log(`Testing to the right of column ${column}`)
-        
+        // console.log(`Testing to the right of column ${column}`)
+
         if (i > 6 || grid[row][i].slotColour != color) {
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
           
         } else if(grid[row][i].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from the right`)
+          winningFour.push(grid[row][i].slotId)
+          // console.log(`The count is ${count-1} + 1 from the right`)
         }
       }
       
-      //not doing tests to the left, other than that seems to work fine
-
       for (let i = column-1; i > column-4; i--){
-        console.log(`Testing to the left of column ${column}`)
+        // console.log(`Testing to the left of column ${column}`)
+
         if(i < 0 || grid[row][i].slotColour != color){
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
 
         } else if (grid[row][i].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from the left`)
+          winningFour.push(grid[row][i].slotId);
+          // console.log(`The count is ${count-1} + 1 from the left`)
         }
       }
 
       if (count === 4){
-        confirm(`The winner is ${player}`)
-        let buttonOne = document.querySelector("#button1");
-        let buttonTwo = document.querySelector("#button2");
-        let buttonThree = document.querySelector("#button3");
-        let buttonFour = document.querySelector("#button4");
-        let buttonFive = document.querySelector("#button5");
-        let buttonSix = document.querySelector("#button6");
-        let buttonSeven = document.querySelector("#button7");
-        buttonOne.remove()
-        buttonTwo.remove()
-        buttonThree.remove()
-        buttonFour.remove()
-        buttonFive.remove()
-        buttonSix.remove()
-        buttonSeven.remove()
-        gameWon.setWinner(player)
-        console.log(`Gamewon is ${gameWon.winnerFound}`)
+        confirm(`The winner is ${player}`);
+        gameWon.setWinner(player);
+        // console.log(`The winning four are ${winningFour}`);
+        winningFour.forEach((slotId)=>{
+          let winningSlot = document.getElementById(`${slotId}`);
+          winningSlot.style.borderStyle = "solid";
+          winningSlot.style.borderWidth = "medium";
+          winningSlot.style.borderColor = "white";
+        })
+        // console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
 
     }
 
     function checkVertical(){
       let count = 1
+      let winningFour = [grid[row][column].slotId]
+      // console.log(`Winning four reset to just ${winningFour}`)
 
       for(let i = row+1; i<row+4; i++){
-        console.log(`Testing below chip placed in row ${row}`)
+        // console.log(`Testing below chip placed in row ${row}`)
         if(i > 5 || grid[i][column].slotColour != color){
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
 
         } else if (grid[i][column].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from below`)
+          winningFour.push(grid[i][column].slotId)
+          // console.log(`The count is ${count-1} + 1 from below`)
         }
       }
 
       if(count === 4){
         confirm(`The winner is ${player}`)
-        let buttonOne = document.querySelector("#button1");
-        let buttonTwo = document.querySelector("#button2");
-        let buttonThree = document.querySelector("#button3");
-        let buttonFour = document.querySelector("#button4");
-        let buttonFive = document.querySelector("#button5");
-        let buttonSix = document.querySelector("#button6");
-        let buttonSeven = document.querySelector("#button7");
-        buttonOne.remove()
-        buttonTwo.remove()
-        buttonThree.remove()
-        buttonFour.remove()
-        buttonFive.remove()
-        buttonSix.remove()
-        buttonSeven.remove()
         gameWon.setWinner(player)
-        console.log(`Gamewon is ${gameWon.winnerFound}`)
+        winningFour.forEach((slotId)=>{
+          let winningSlot = document.getElementById(`${slotId}`);
+          winningSlot.style.borderStyle = "solid";
+          winningSlot.style.borderWidth = "medium";
+          winningSlot.style.borderColor = "white";
+        })
+        // console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
 
     }
@@ -202,99 +207,91 @@ class Game {
       //break if column+i >6. Or column-i < 0.
 
       let count = 1
+      let winningFour = [grid[row][column].slotId]
+      // console.log(`Winning four reset to just ${winningFour}`)
 
       for(let i = 1; i<4; i++){
-        console.log(`Testing top left of chip placed in column ${column}, row ${row}`)
+        // console.log(`Testing top left of chip placed in column ${column}, row ${row}`)
         if(row-i < 0 || column-i < 0 || grid[row-i][column-i].slotColour != color){
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
 
         } else if (grid[row-i][column-i].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from top left`)
+          winningFour.push(grid[row-i][column-i].slotId)
+          // console.log(`The count is ${count-1} + 1 from top left`)
         }
       }
 
       for(let i = 1; i<4; i++){
-        console.log(`Testing bottom right of chip placed in column ${column}, row ${row}`)
+        // console.log(`Testing bottom right of chip placed in column ${column}, row ${row}`)
         if(row+i > 5 || column+i > 6 || grid[row+i][column+i].slotColour != color){
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
 
         } else if (grid[row+i][column+i].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from bottom right`)
+          winningFour.push(grid[row+i][column+i].slotId)
+          // console.log(`The count is ${count-1} + 1 from bottom right`)
         }
       }
 
       if(count === 4){
         confirm(`The winner is ${player}`)
-        let buttonOne = document.querySelector("#button1");
-        let buttonTwo = document.querySelector("#button2");
-        let buttonThree = document.querySelector("#button3");
-        let buttonFour = document.querySelector("#button4");
-        let buttonFive = document.querySelector("#button5");
-        let buttonSix = document.querySelector("#button6");
-        let buttonSeven = document.querySelector("#button7");
-        buttonOne.remove()
-        buttonTwo.remove()
-        buttonThree.remove()
-        buttonFour.remove()
-        buttonFive.remove()
-        buttonSix.remove()
-        buttonSeven.remove()
         gameWon.setWinner(player)
-        console.log(`Gamewon is ${gameWon.winnerFound}`)
+        winningFour.forEach((slotId)=>{
+          let winningSlot = document.getElementById(`${slotId}`);
+          winningSlot.style.borderStyle = "solid";
+          winningSlot.style.borderWidth = "medium";
+          winningSlot.style.borderColor = "white";
+        })
+        // console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
     }
     
     function checkTopRightDiagonal(){
 
       let count = 1
+      let winningFour = [grid[row][column].slotId]
+      // console.log(`Winning four reset to just ${winningFour}`)
 
       for(let i = 1; i<4; i++){
-        console.log(`Testing top right of chip placed in column ${column}, row ${row}`)
+        // console.log(`Testing top right of chip placed in column ${column}, row ${row}`)
         if(row-i < 0 || column+i > 6 || grid[row-i][column+i].slotColour != color){
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
 
         } else if (grid[row-i][column+i].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from top right`)
+          winningFour.push(grid[row-i][column+i].slotId)
+          // console.log(`The count is ${count-1} + 1 from top right`)
         }
       }
 
       for(let i = 1; i<4; i++){
-        console.log(`Testing bottom left of chip placed in column ${column}, row ${row}`)
+        // console.log(`Testing bottom left of chip placed in column ${column}, row ${row}`)
         if(row+i > 5 || column-i < 0 || grid[row+i][column-i].slotColour != color){
-          console.log(`The count is ${count}`)
+          // console.log(`The count is ${count}`)
           break
 
         } else if (grid[row+i][column-i].slotColour === color){
           count++
-          console.log(`The count is ${count-1} + 1 from bottom left`)
+          winningFour.push(grid[row+i][column-i].slotId)
+          // console.log(`The count is ${count-1} + 1 from bottom left`)
         }
       }
 
 
       if(count === 4){
         confirm(`The winner is ${player}`)
-        let buttonOne = document.querySelector("#button1");
-        let buttonTwo = document.querySelector("#button2");
-        let buttonThree = document.querySelector("#button3");
-        let buttonFour = document.querySelector("#button4");
-        let buttonFive = document.querySelector("#button5");
-        let buttonSix = document.querySelector("#button6");
-        let buttonSeven = document.querySelector("#button7");
-        buttonOne.remove()
-        buttonTwo.remove()
-        buttonThree.remove()
-        buttonFour.remove()
-        buttonFive.remove()
-        buttonSix.remove()
-        buttonSeven.remove()
         gameWon.setWinner(player)
-        console.log(`Gamewon is ${gameWon.winnerFound}`)
+        winningFour.forEach((slotId)=>{
+          let winningSlot = document.getElementById(`${slotId}`);
+          winningSlot.style.borderStyle = "solid";
+          winningSlot.style.borderWidth = "medium";
+          winningSlot.style.borderColor = "white";
+        })
+        // console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
     }
 
@@ -310,5 +307,6 @@ class Game {
 //create a winner class, that can change once winner found.
 
 //Get it to highlight the winning four.
+
 //Deploy as Lan game.
 //Work on websocket version.

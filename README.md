@@ -24,3 +24,9 @@ All changes come after the bootcamp.
 - Message displays winner and locks out buttons once winner is found.
 - Added default values for name prompt.
 
+- Added a delay before you can click the buttons again to stop people accidentally clicking twice.
+- Refactored winning screen function so it isn't being reused constantly.
+- Working on getting slots to highlight winning four when winner found.
+- Slots now highlight when winner found.
+- Will try and deploy app now.
+

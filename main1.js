@@ -1,4 +1,4 @@
-const playerName1 = prompt("Player1 What is your name?", "Player One");
+const playerName1 = prompt("Player 1 What is your name?", "Player One");
 const playerName2 = prompt("Player 2 What is your name?", "Player Two");
 
 let buttonOne = document.querySelector("#button1");
@@ -10,8 +10,6 @@ let buttonSix = document.querySelector("#button6");
 let buttonSeven = document.querySelector("#button7");
 // let resetButton = document.querySelector("#reset")
 
-
-
 const players = [
   { id: 1, name: playerName1, colour: "Red" },
   { id: 2, name: playerName2, colour: "Yellow" },
@@ -19,11 +17,50 @@ const players = [
 
 const game = new Game(players);
 
-buttonOne.addEventListener("click", ()=> {game.play(0);});
-buttonTwo.addEventListener("click", ()=> {game.play(1)});
-buttonThree.addEventListener("click", ()=> {game.play(2)});
-buttonFour.addEventListener("click", ()=> {game.play(3)});
-buttonFive.addEventListener("click", ()=> {game.play(4)});
-buttonSix.addEventListener("click", ()=> {game.play(5)});
-buttonSeven.addEventListener("click", ()=> {game.play(6)});
-// resetButton.addEventListener("click", ()=> {game})
+buttonOne.addEventListener("click", () => {
+  game.play(0);
+  disableButtons();
+});
+buttonTwo.addEventListener("click", () => {
+  game.play(1);
+  disableButtons();
+});
+buttonThree.addEventListener("click", () => {
+  game.play(2);
+  disableButtons();
+});
+buttonFour.addEventListener("click", () => {
+  game.play(3);
+  disableButtons();
+});
+buttonFive.addEventListener("click", () => {
+  game.play(4);
+  disableButtons();
+});
+buttonSix.addEventListener("click", () => {
+  game.play(5);
+  disableButtons();
+});
+buttonSeven.addEventListener("click", () => {
+  game.play(6);
+  disableButtons();
+});
+
+function disableButtons() {
+    buttonOne.disabled = true;
+    buttonTwo.disabled = true;
+    buttonThree.disabled = true;
+    buttonFour.disabled = true;
+    buttonFive.disabled = true;
+    buttonSix.disabled = true;
+    buttonSeven.disabled = true;
+  setTimeout(function () {
+    buttonOne.disabled = false;
+    buttonTwo.disabled = false;
+    buttonThree.disabled = false;
+    buttonFour.disabled = false;
+    buttonFive.disabled = false;
+    buttonSix.disabled = false;
+    buttonSeven.disabled = false;
+  }, 200);
+}
