@@ -9,16 +9,16 @@ let buttonFive = document.querySelector("#button5");
 let buttonSix = document.querySelector("#button6");
 let buttonSeven = document.querySelector("#button7");
 // let resetButton = document.querySelector("#reset")
-if(playerName1 === null || " " || undefined){
+if(playerName1 === null || "" || undefined){
   playerName1 = "Player One"
 }
 
 
-if(playerName2 === null || " " || undefined){
+if(playerName2 === null || "" || undefined){
   playerName2 = "Player Two"
 }
 
-const players = [
+let players = [
   { id: 1, name: playerName1, colour: "Red" },
   { id: 2, name: playerName2, colour: "Yellow" },
 ];

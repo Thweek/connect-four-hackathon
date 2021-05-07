@@ -243,7 +243,7 @@ class Game {
           let winningSlot = document.getElementById(`${slotId}`);
           winningSlot.style.borderStyle = "solid";
           winningSlot.style.borderWidth = "medium";
-          winningSlot.style.borderColor = "white";
+          winningSlot.style.borderColor = "black";
         })
         // console.log(`Gamewon is ${gameWon.winnerFound}`)
       }
@@ -289,7 +289,7 @@ class Game {
           let winningSlot = document.getElementById(`${slotId}`);
           winningSlot.style.borderStyle = "solid";
           winningSlot.style.borderWidth = "medium";
-          winningSlot.style.borderColor = "white";
+          winningSlot.style.borderColor = "black";
         })
         // console.log(`Gamewon is ${gameWon.winnerFound}`)
       }

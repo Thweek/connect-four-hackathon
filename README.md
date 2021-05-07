@@ -19,10 +19,10 @@ All changes come after the bootcamp.
 
 - Added in visual display so that colour of chosen slot changes on the page as well as in game array.
 - Added a text display that shows current player and there colour.
-- Added a variety of console logs to show and explain what is happening as game proceeds. Access your development console and then navigate to console to see these.
-- Changed CSS to centre the display.
+- Added a variety of console logs to
 - Wrote pseudo code for win conditions.
-<br/><br/>
+<br/><br/> show and explain what is happening as game proceeds. Access your development console and then navigate to console to see these.
+- Changed CSS to centre the display.
 - Win conditions written and checked in game-scenario.
 - Added reset button that resets game (added css as well).
 - Message displays winner and locks out buttons once winner is found.
@@ -33,8 +33,11 @@ All changes come after the bootcamp.
 - Working on getting slots to highlight winning four when winner found.
 - Slots now highlight when winner found.
 - Will try and deploy app now.
+<br/><br/>
+- Deployed to https://thweek-local-connectfour.netlify.app/
+- Need to figure out how to deal with playername if you get null/""/undefined back from prompt
 
 ## Todo
 - Sort default name, when using if statement to set it. Automatically defaults.
-- Make highlighting of Winner better
+
 
